@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router,Routes,Route,Link } from 'react-router-dom';
 import './App.css';
+import NewJobComponent from './components/NewJob/NewJobComponent';
+import ViewJobComponent from './components/ViewJob/ViewJobComponent';
+import EditJobComponent from './components/EditJob/EditJobComponent';
+import HomeComponent from './components/HomeComponent/HomeComponent';
+import JobDetails from './components/JobDetails';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='navs'>
+        <Link to="/new">New Job Adding</Link><br/>
+        <Link to="/edit">Edit Job</Link><br/>
+        <Link to="/view">View Job</Link>
+        <Link to="/jobdetails"></Link>
+      </div>
+      <Routes>
+        <Route exact path="/" element={<HomeComponent/>}></Route>
+        <Route exact path="/new" element={<NewJobComponent/>}></Route>
+        <Route exact path="/view" element={<ViewJobComponent/>}></Route>
+        <Route exact path="/edit" element={<EditJobComponent/>}></Route>
+        <Route exact path="/jobdetails" element={<JobDetails/>}></Route>
+      </Routes>
+    </Router>
   );
 }
 
